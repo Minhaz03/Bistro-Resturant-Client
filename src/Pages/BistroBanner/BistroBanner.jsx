@@ -4,7 +4,7 @@ const BistroBanner = () => {
   return (
     <div className="my-10">
       <div
-        className="hero h-[550px]"
+        className="hero bg-fixed h-[550px]"
         style={{
           backgroundImage:
             "url(https://i.ibb.co.com/WHKzB1f/restaurant-1284351-1280.jpg)",

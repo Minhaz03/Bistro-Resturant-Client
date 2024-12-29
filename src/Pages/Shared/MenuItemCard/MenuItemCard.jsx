@@ -15,7 +15,7 @@ const MenuItemCard = ({ item }) => {
           <h2 className="card-title">{name}</h2>
           <p>{recipe}</p>
           <div className="card-actions justify-center mt-3">
-            <button className="btn btn-primary">Add To Cart</button>
+            <button className="btn btn-primary btn-outline border-0 border-b-8 mt-10">Add To Cart</button>
           </div>
         </div>
       </div>
