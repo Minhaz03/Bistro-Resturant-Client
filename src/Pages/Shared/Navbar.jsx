@@ -5,27 +5,35 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/">HOME</Link>
       </li>
-      <li>
+      {/* <li>
         <details>
-          <summary>Authentications</summary>
+          <summary>AUTHENTICATION</summary>
           <ul className="p-2">
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login">LOGIN</Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>
+              <Link to="/register">REGISTER</Link>
             </li>
           </ul>
         </details>
-      </li>
+      </li> */}
       <li>
-        <Link to=""></Link>
+        <Link to="">CONTACT US</Link>
       </li>
 
       <li>
-        <Link to=""></Link>
+        <Link to="">DASHBOARD</Link>
+      </li>
+
+      <li>
+        <Link to="">OUR MENU</Link>
+      </li>
+
+      <li>
+        <Link to="">OUR SHOP</Link>
       </li>
     </>
   );
@@ -39,9 +47,10 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <section>
-      <div className="mt-5">
+      <div>
         <div
           className={`navbar ${
             isScrolled
@@ -50,7 +59,7 @@ const Navbar = () => {
           }`}
         >
           <div className="navbar-start">
-            <div className="dropdown">
+            <div className="dropdown text-white">
               <div
                 tabIndex={0}
                 role="button"
@@ -73,7 +82,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow font-bold"
+                className="menu menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow font-bold"
               >
                 {links}
               </ul>
@@ -101,18 +110,11 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
-                <Link to="/register" className="text-xl font-bold italic">
-                  <li>
-                    <h2>Register</h2>
-                  </li>
-                </Link>
-                <Link to="/login" className="text-xl font-bold italic">
-                  <li>
-                    <h2>Sign In</h2>
-                  </li>
-                </Link>
+                <button className="btn font-bold italic">
+                  Sign Out/Log Out
+                </button>
               </ul>
             </div>
           </div>
