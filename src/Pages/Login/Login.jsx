@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  LoadCanvasTemplateNoReload,
+  validateCaptcha,
+} from "react-simple-captcha";
 
 const Login = () => {
+  const captchaRef = useRef(null);
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
+
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -8,6 +21,13 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+  };
+
+  const handleValidateCaptcha = () => {
+    const user_captcha_value = captchaRef.current.value;
+    if (validateCaptcha(user_captcha_value)) {
+      setDisabled(false);
+    }
   };
 
   return (
@@ -24,25 +44,50 @@ const Login = () => {
         <div className="card bg-base-100 md:w-1/2 max-w-sm shadow-2xl">
           <form onSubmit={handleLogin} className="card-body">
             <fieldset className="fieldset">
+              {/* Email NAme */}
               <label className="label">Email</label>
               <input
                 type="email"
                 name="email"
-                className="input"
+                className="input input-bordered"
                 placeholder="Email"
               />
+
+              {/* Password */}
               <label className="label">Password</label>
               <input
                 type="password"
                 name="password"
-                className="input"
+                className="input input-bordered"
                 placeholder="Password"
               />
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
 
+              {/* Captcha */}
+              <label className="label">
+                <LoadCanvasTemplate />
+              </label>
               <input
+                type="text"
+                ref={captchaRef}
+                name="captcha"
+                className="input input-bordered"
+                placeholder="Type the captcha"
+              />
+              <div className="mt-3">
+                <button
+                  onClick={handleValidateCaptcha}
+                  className="btn btn-outline btn-sm"
+                >
+                  Validate
+                </button>
+              </div>
+
+              {/* Login BTN */}
+              <input
+                disabled={disabled}
                 className="btn btn-neutral mt-4"
                 type="submit"
                 value="Login"
