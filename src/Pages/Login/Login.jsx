@@ -7,6 +7,7 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../Context/AuthProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const captchaRef = useRef(null);
@@ -43,77 +44,82 @@ const Login = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center md:w-1/2  lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-        </div>
-        <div className="card bg-base-100 md:w-1/2 max-w-sm shadow-2xl">
-          <form onSubmit={handleLogin} className="card-body">
-            <fieldset className="fieldset">
-              {/* Email NAme */}
-              <label className="label">Email</label>
-              <input
-                type="email"
-                name="email"
-                className="input input-bordered"
-                placeholder="Email"
-              />
+    <>
+      <Helmet>
+        <title>Bistro Boss | Login</title>
+      </Helmet>
+      <div className="hero bg-base-200 min-h-screen">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <div className="text-center md:w-1/2  lg:text-left">
+            <h1 className="text-5xl font-bold">Login now!</h1>
+            <p className="py-6">
+              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
+              et a id nisi.
+            </p>
+          </div>
+          <div className="card bg-base-100 md:w-1/2 max-w-sm shadow-2xl">
+            <form onSubmit={handleLogin} className="card-body">
+              <fieldset className="fieldset">
+                {/* Email NAme */}
+                <label className="label">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  className="input input-bordered"
+                  placeholder="Email"
+                />
 
-              {/* Password */}
-              <label className="label">Password</label>
-              <input
-                type="password"
-                name="password"
-                className="input input-bordered"
-                placeholder="Password"
-              />
-              <div>
-                <a className="link link-hover">Forgot password?</a>
-              </div>
+                {/* Password */}
+                <label className="label">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  className="input input-bordered"
+                  placeholder="Password"
+                />
+                <div>
+                  <a className="link link-hover">Forgot password?</a>
+                </div>
 
-              {/* Captcha */}
-              <label className="label">
-                <LoadCanvasTemplate />
-              </label>
-              <input
-                type="text"
-                ref={captchaRef}
-                name="captcha"
-                className="input input-bordered"
-                placeholder="Type the captcha"
-              />
-              <div className="mt-3">
-                <button
-                  onClick={handleValidateCaptcha}
-                  className="btn btn-outline btn-sm"
-                >
-                  Validate
-                </button>
-              </div>
+                {/* Captcha */}
+                <label className="label">
+                  <LoadCanvasTemplate />
+                </label>
+                <input
+                  type="text"
+                  ref={captchaRef}
+                  name="captcha"
+                  className="input input-bordered"
+                  placeholder="Type the captcha"
+                />
+                <div className="mt-3">
+                  <button
+                    onClick={handleValidateCaptcha}
+                    className="btn btn-outline btn-sm"
+                  >
+                    Validate
+                  </button>
+                </div>
 
-              {/* Login BTN */}
-              <input
-                disabled={disabled}
-                className="btn btn-neutral mt-4"
-                type="submit"
-                value="Login"
-              />
-            </fieldset>
-          </form>
-          <p className="text-center">
-            <small>
-              New Here <Link to="/signup">Create an Account</Link>
-            </small>
-          </p>
+                {/* Login BTN */}
+                <input
+                  disabled={disabled}
+                  className="btn btn-neutral mt-4"
+                  type="submit"
+                  value="Login"
+                />
+              </fieldset>
+            </form>
+            <p className="text-center">
+              <small>
+                New Here <Link to="/signup">Create an Account</Link>
+              </small>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
