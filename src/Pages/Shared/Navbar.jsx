@@ -45,6 +45,10 @@ const Navbar = () => {
         <Link to="/order/salad">OUR FOODS</Link>
       </li>
 
+      <li>
+        <Link to="/secret">Secret</Link>
+      </li>
+
       {user ? (
         <>
           <button onClick={handleLogOut} className="btn btn-ghost">
